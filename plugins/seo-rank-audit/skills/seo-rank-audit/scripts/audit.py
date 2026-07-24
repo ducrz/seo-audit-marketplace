@@ -111,6 +111,16 @@ class PageParser(HTMLParser):
         if tag == "title":
             self._in_title = False
         elif tag in ("h1", "h2", "h3"):
+            # Normaliza espaço só aqui (uma vez, no fim), não fragmento a
+            # fragmento em handle_data — achado real auditando cupomdescontos.com:
+            # um <h1> com texto + <span> aninhado (ex: "Cupom <span>Loja</span> 2026")
+            # chegava no handle_data em pedaços separados, e dar .strip() em cada
+            # pedaço individualmente comia o espaço de conexão entre eles,
+            # reportando falso "H1 concatenado sem espaço" (ex: "CupomLoja2026")
+            # quando o H1 real, renderizado, tinha os espaços certos.
+            if self.headings[tag]:
+                raw = self.headings[tag][-1]
+                self.headings[tag][-1] = re.sub(r"\s+", " ", raw).strip()
             self._in_heading = None
         elif tag in ("script", "style"):
             if self._skip_text > 0:
@@ -146,7 +156,7 @@ class PageParser(HTMLParser):
         if self._in_title:
             self.title += data
         if self._in_heading:
-            self.headings[self._in_heading][-1] += data.strip()
+            self.headings[self._in_heading][-1] += data
         if self._in_jsonld:
             self._jsonld_buf += data
         if self._skip_text == 0:

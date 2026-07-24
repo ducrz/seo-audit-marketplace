@@ -119,13 +119,28 @@ class PageParser(HTMLParser):
                 self._in_jsonld = False
                 try:
                     data = json.loads(self._jsonld_buf)
-                    items = data if isinstance(data, list) else [data]
-                    for item in items:
-                        t = item.get("@type") if isinstance(item, dict) else None
-                        if t:
-                            self.jsonld.append(t if isinstance(t, str) else str(t))
+                    self._extract_jsonld_types(data)
                 except Exception:
                     self.jsonld.append("(JSON-LD inválido)")
+
+    def _extract_jsonld_types(self, node):
+        """Extrai @type recursivamente. Cobre o padrão @graph (vários objetos
+        schema dentro de um único nó raiz, ex: {"@context":..., "@graph":[...]})
+        — achado real auditando cupomdescontos.com: esse padrão não era
+        detectado, reportando falso jsonld_types: [] mesmo com schema rico
+        implementado (Organization/WebSite/BreadcrumbList/FAQPage etc.)."""
+        if isinstance(node, list):
+            for item in node:
+                self._extract_jsonld_types(item)
+            return
+        if not isinstance(node, dict):
+            return
+        t = node.get("@type")
+        if t:
+            self.jsonld.append(t if isinstance(t, str) else str(t))
+        graph = node.get("@graph")
+        if graph:
+            self._extract_jsonld_types(graph)
 
     def handle_data(self, data):
         if self._in_title:

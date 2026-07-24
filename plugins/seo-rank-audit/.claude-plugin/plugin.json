@@ -1,0 +1,16 @@
+{
+  "name": "seo-rank-audit",
+  "version": "1.6.1",
+  "description": "Audita sites e blogs com notas 0-100 por critério segundo os fatores de ranqueamento documentados do Google e do Bing, com relatório priorizado de correções.",
+  "author": {
+    "name": "Eduardo"
+  },
+  "keywords": [
+    "seo",
+    "auditoria",
+    "google",
+    "bing",
+    "ranking"
+  ],
+  "homepage": "https://www.cupomdescontos.com/ferramentas/auditoria-seo"
+}

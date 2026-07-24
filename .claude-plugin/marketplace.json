@@ -1,0 +1,11 @@
+{
+  "name": "seo-audit-marketplace",
+  "owner": { "name": "Eduardo" },
+  "plugins": [
+    {
+      "name": "seo-rank-audit",
+      "source": "./plugins/seo-rank-audit",
+      "description": "Auditoria SEO com notas por critérios Google e Bing"
+    }
+  ]
+}

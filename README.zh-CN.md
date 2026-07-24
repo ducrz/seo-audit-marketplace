@@ -7,6 +7,10 @@
 
 📄 **完整文档：** https://www.cupomdescontos.com/ferramentas/auditoria-seo
 
+## 环境要求
+
+已安装 [Claude Code](https://docs.claude.com/en/docs/claude-code)（`npm install -g @anthropic-ai/claude-code`），并在终端中运行 —— `/plugin` 命令在 IDE 集成环境中不可用。
+
 ## 安装
 
 ```

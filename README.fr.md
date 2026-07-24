@@ -8,6 +8,10 @@ rapport de corrections priorisé.
 
 📄 **Documentation complète :** https://www.cupomdescontos.com/ferramentas/auditoria-seo
 
+## Prérequis
+
+[Claude Code](https://docs.claude.com/en/docs/claude-code) installé (`npm install -g @anthropic-ai/claude-code`), exécuté dans un terminal — la commande `/plugin` n'est pas disponible dans les intégrations IDE.
+
 ## Installation
 
 ```

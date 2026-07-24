@@ -8,6 +8,10 @@ informe priorizado de correcciones.
 
 📄 **Documentación completa:** https://www.cupomdescontos.com/ferramentas/auditoria-seo
 
+## Requisitos
+
+[Claude Code](https://docs.claude.com/en/docs/claude-code) instalado (`npm install -g @anthropic-ai/claude-code`), ejecutándose en una terminal — el comando `/plugin` no está disponible en integraciones de IDE.
+
 ## Instalación
 
 ```

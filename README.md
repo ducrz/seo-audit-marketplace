@@ -1,43 +1,45 @@
+🌐 [English](README.md) · [Português](README.pt-BR.md) · [Español](README.es.md) · [Français](README.fr.md) · [中文](README.zh-CN.md)
+
 # SEO Rank Audit
 
-Skill open source para Claude Code que audita um site e atribui **notas de 0 a
-100 por critério, separadas para Google e Bing**, com relatório priorizado de
-correções.
+Open source skill for Claude Code that audits a site and assigns **scores from
+0 to 100 per criterion, separated for Google and Bing**, with a prioritized
+report of fixes.
 
-📄 **Documentação completa:** https://www.cupomdescontos.com/ferramentas/auditoria-seo
+📄 **Full documentation:** https://www.cupomdescontos.com/ferramentas/auditoria-seo
 
-## Instalação
+## Installation
 
 ```
 /plugin marketplace add ducrz/seo-audit-marketplace
 /plugin install seo-rank-audit
 ```
 
-## Uso
+## Usage
 
 ```
-audita o exemplo.com.br
-por que essa página não ranqueia no Bing?
+audit example.com
+why isn't this page ranking on Bing?
 ```
 
-## O que coleta
+## What it collects
 
-- **Estrutura** — titles, metas, headings, canonical, schema, robots, sitemap,
-  HTTPS, alt, links internos e atributos de link patrocinado (home + 5-10
-  páginas internas)
-- **Velocidade** — Core Web Vitals reais via API pública do PageSpeed Insights
-  (sem chave, sem cadastro)
-- **Bing Webmaster** *(opcional)* — tráfego, rastreamento e backlinks, para
-  sites verificados na conta do próprio usuário
+- **Structure** — titles, meta tags, headings, canonical, schema, robots,
+  sitemap, HTTPS, alt text, internal links and sponsored-link attributes
+  (home + 5-10 internal pages)
+- **Speed** — real Core Web Vitals via the public PageSpeed Insights API
+  (no API key, no signup)
+- **Bing Webmaster** *(optional)* — traffic, crawling and backlinks, for
+  sites verified in the user's own account
 
-## Princípio
+## Principle
 
-As notas refletem fatores **documentados** por Google e Bing, não o algoritmo
-real. O que não pode ser medido é marcado como não verificado e sai da base de
-cálculo — nunca vira chute nem zero.
+Scores reflect **documented** ranking factors from Google and Bing, not the
+real algorithm. Anything that can't be measured is marked as unverified and
+removed from the score base — it never becomes a guess or a zero.
 
-## Licença
+## License
 
-MIT — mantido por [Eduardo Monteiro](https://www.cupomdescontos.com/sobre),
-que também toca o [CupomDescontos](https://www.cupomdescontos.com/). Construí
-esta ferramenta para auditar meus próprios sites e resolvi abrir o código.
+MIT — maintained by [Eduardo Monteiro](https://www.cupomdescontos.com/sobre),
+who also runs [CupomDescontos](https://www.cupomdescontos.com/). Built this
+tool to audit my own sites and decided to open source it.

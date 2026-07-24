@@ -72,6 +72,12 @@ e produz um relatório com notas Google, Bing e geral.
    - `unverified` lista cada item fora do alcance E como o usuário pode checar.
    - O layout é fixo: preencha o JSON, não reescreva o template. Isso mantém
      todos os relatórios consistentes e economiza tokens.
+   - **Sempre termine mostrando o caminho absoluto do arquivo gerado como link
+     `file://`**, para o usuário abrir com um clique — ex:
+     `file:///home/usuario/auditoria-exemplo-com-2026-07-24.html`. Resolva o
+     caminho absoluto real (não relativo) antes de mostrar. Isso não é um
+     link compartilhável na internet — só abre no navegador de quem rodou a
+     skill, no computador onde ela rodou.
 
 O fluxo acima é 100% sem chave, sem cadastro e sem configuração. Não
 mencione chaves de API a menos que o usuário peça mais profundidade ou a

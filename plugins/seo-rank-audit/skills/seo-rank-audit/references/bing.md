@@ -40,9 +40,15 @@ O Bing é mais literal que o Google:
 
 - `robots_txt` e `sitemap` válidos (5 pts)
 - Dados estruturados: o Bing lê JSON-LD e também microdata/RDFa (5 pts)
-- Uso de IndexNow (verifique se há chave em /indexnow ou pergunte ao usuário;
-  se não der para verificar, marque "não verificado" e recomende — é
-  diferencial forte de indexação no Bing) (5 pts)
+- Uso de IndexNow — achado real (2026-07-25): não existe caminho fixo tipo
+  `/indexnow` ou `/.well-known/indexnow` no protocolo real. A chave é servida
+  como arquivo de texto em `/{chave}.txt` na raiz do site, e o nome do
+  arquivo É a própria chave — não dá para adivinhar sem saber a chave de
+  antemão. Não conclua "não configurado" só por não achar um endpoint
+  padrão. Pergunte ao usuário se ele sabe a chave (para checar
+  `https://site.com/{chave}.txt` diretamente) ou se confirma por outro meio
+  que está configurado; sem isso, marque como "não verificado" — é
+  diferencial forte de indexação no Bing (5 pts)
 - Bing Webmaster Tools configurado — verificável via bing_wmt.py quando o
   usuário fornece a chave (site próprio); senão pergunte (5 pts)
 

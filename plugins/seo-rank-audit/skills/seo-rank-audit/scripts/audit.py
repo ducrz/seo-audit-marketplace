@@ -25,6 +25,14 @@ UA = "Mozilla/5.0 (compatible; SEORankAudit/1.0; +https://github.com/)"
 TIMEOUT = 20
 
 
+def _norm_netloc(netloc):
+    """Trata 'www.exemplo.com' e 'exemplo.com' como o mesmo host — comum em
+    sites que redirecionam apex<->www (ex.: cupomdescontoo.com ->
+    www.cupomdescontoo.com). Sem isso, todo link interno é classificado como
+    externo assim que a home redireciona, zerando a amostragem."""
+    return netloc[4:] if netloc.lower().startswith("www.") else netloc.lower()
+
+
 def fetch(url):
     """Retorna (status, html, elapsed_s, final_url, headers) ou (erro, None, ...)."""
     req = Request(url, headers={"User-Agent": UA, "Accept-Encoding": "gzip"})
@@ -191,7 +199,7 @@ def analyze_page(url, base_netloc):
         for r in rel_counts:
             if r in relset:
                 rel_counts[r] += 1
-        if parsed.netloc == base_netloc:
+        if _norm_netloc(parsed.netloc) == _norm_netloc(base_netloc):
             internal.append(absu.split("#")[0])
         else:
             external += 1
@@ -286,7 +294,7 @@ def main():
     for u in sitemap_urls:
         if len(sample) >= args.pages:
             break
-        if urlparse(u).netloc == base_netloc and u not in seen:
+        if _norm_netloc(urlparse(u).netloc) == _norm_netloc(base_netloc) and u not in seen:
             seen.add(u)
             sample.append(u)
 
